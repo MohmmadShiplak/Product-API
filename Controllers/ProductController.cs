@@ -31,24 +31,31 @@ namespace Products_API.Controllers
 
             //using linq
 
-          //  return  Ok(await _Context.Products.ToListAsync());
+            //  return  Ok(await _Context.Products.ToListAsync());
 
             //using Stored procedure 
 
-           // return Ok(await _Context.Products.FromSql($"Exec SP_GetAllProducts").ToListAsync());
+             return Ok(await _Context.Products.FromSql($"Exec SP_GetAllProducts").ToListAsync());
 
 
-            var Products =await _Context.Products.Select(p=>
-            new
-            {
+            //            var Products =await _Context.Products.Select(p=>
+            //            new
+            //            {
 
-                p.Id,
-                p.Name,
-                p.Price
+            //                p.Id,
+            //                p.Name,
+            //                p.Price
 
 
-            }).ToListAsync();   
-return Ok(Products);
+            //            }).ToListAsync();   
+            //return Ok(Products);
+
+           // return Ok(await _Context.Database.ExecuteSqlRawAsync("EXEC SP_GetAllProducts "));
+
+
+
+
+
         }
 
 
